@@ -262,6 +262,12 @@ function renderDataTable(tab) {
       html += `<td>${row.expiredatenoti ?? '-'}</td>`;
       html += `<td>${row.expirenotidatetick ?? '-'}</td>`;
       html += `<td>${row.stock2 ?? '-'}</td>`;
+      // Profit column
+      if (typeof row.price === 'number' && typeof row.cost === 'number') {
+        html += `<td>${(row.price - row.cost).toLocaleString()}</td>`;
+      } else {
+        html += `<td>-</td>`;
+      }
     } else if (tab === 'customers') {
       html += `<td>${row.name ?? '-'}</td><td>${row.adress ?? '-'}</td><td>${row.category ?? '-'}</td><td>${row.note ?? '-'}</td><td>${row.phonenumber ?? '-'}</td>`;
     } else if (tab === 'categories') {
@@ -419,7 +425,7 @@ function fetchAndRenderPayables() {
 // Myanmar headers for each table
 const myanmarHeaders = {
   product: [
-    'စဉ်','ကုန်ပစ္စည်းအမည်','အမျိုးအစား','ဘားကုဒ်','ဝယ်ဈေး','ရောင်းဈေး','လက်ကျန်','ယူနစ်','မှတ်ချက်','ဈေး၂','ဈေး၃','လက်ကျန်သတိပေး','သက်တမ်း','သက်တမ်းသတိပေး','သက်တမ်းသတိပေးရက်','လက်ကျန်၂'
+    'စဉ်','ကုန်ပစ္စည်းအမည်','အမျိုးအစား','ဘားကုဒ်','ဝယ်ဈေး','ရောင်းဈေး','လက်ကျန်','ယူနစ်','မှတ်ချက်','ဈေး၂','ဈေး၃','လက်ကျန်သတိပေး','သက်တမ်း','သက်တမ်းသတိပေး','သက်တမ်းသတိပေးရက်','လက်ကျန်၂','အမြတ်ငွေ'
   ],
   customers: ['စဉ်','ဖောက်သည်အမည်','လိပ်စာ','အမျိုးအစား','မှတ်ချက်','ဖုန်းနံပါတ်'],
   categories: ['စဉ်','အမျိုးအစားအမည်'],
