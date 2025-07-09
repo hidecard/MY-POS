@@ -440,7 +440,7 @@ function renderDataTable(tab) {
   if (searchValue) {
     filtered = data.filter(row => Object.values(row).some(val => String(val).toLowerCase().includes(searchValue)));
   }
-  const perPage = 8;
+  const perPage = 5;
   const page = pageCache[tab] || 1;
   const start = (page - 1) * perPage;
   const end = start + perPage;
