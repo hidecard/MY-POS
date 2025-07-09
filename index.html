@@ -42,62 +42,108 @@
 <div class="sidebar d-flex flex-column p-0" id="sidebarNav">
   <h4 class="text-center mb-4">POS System</h4>
   <nav class="nav flex-column">
-    <a class="nav-link active" href="#" onclick="showTab('product')"><i class="fas fa-box"></i> Products</a>
-    <a class="nav-link" href="#" onclick="showTab('customers')"><i class="fas fa-users"></i> Customers</a>
-    <a class="nav-link" href="#" onclick="showTab('categories')"><i class="fas fa-tags"></i> Categories</a>
-    <a class="nav-link" href="#" onclick="showTab('unit')"><i class="fas fa-ruler"></i> Unit</a>
-    <a class="nav-link" href="#" onclick="showTab('supplier')"><i class="fas fa-truck"></i> Supplier</a>
-    <a class="nav-link" href="#" onclick="showTab('voucherdetails')"><i class="fas fa-file-invoice"></i> Voucher Details</a>
-    <a class="nav-link" href="#" onclick="showTab('salelist')"><i class="fas fa-receipt"></i> Sale List</a>
-    <a class="nav-link" href="#" onclick="showTab('purchaselist')"><i class="fas fa-shopping-cart"></i> Purchase List</a>
-    <a class="nav-link" href="#" onclick="showTab('purchasevoucherdetails')"><i class="fas fa-file-alt"></i> Purchase Voucher Details</a>
+    <a class="nav-link active" href="#" onclick="showTab('product')"><i class="fas fa-box"></i> ကုန်ပစ္စည်း</a>
+    <a class="nav-link" href="#" onclick="showTab('customers')"><i class="fas fa-users"></i> ဖောက်သည်</a>
+    <a class="nav-link" href="#" onclick="showTab('categories')"><i class="fas fa-tags"></i> အမျိုးအစား</a>
+    <a class="nav-link" href="#" onclick="showTab('unit')"><i class="fas fa-ruler"></i> ယူနစ်</a>
+    <a class="nav-link" href="#" onclick="showTab('supplier')"><i class="fas fa-truck"></i> ပေးသွင်းသူ</a>
+    <a class="nav-link" href="#" onclick="showTab('voucherdetails')"><i class="fas fa-file-invoice"></i> ငွေတောင်းခံစာ</a>
+    <a class="nav-link" href="#" onclick="showTab('salelist')"><i class="fas fa-receipt"></i> အရောင်းစာရင်း</a>
+    <a class="nav-link" href="#" onclick="showTab('purchaselist')"><i class="fas fa-shopping-cart"></i> အဝယ်စာရင်း</a>
+    <a class="nav-link" href="#" onclick="showTab('purchasevoucherdetails')"><i class="fas fa-file-alt"></i> အဝယ်ငွေတောင်းခံစာ</a>
     <a class="nav-link" href="#" onclick="showTab('payables')"><i class="fas fa-money-bill-wave"></i> ပေးရန်ရှိသူများ</a>
   </nav>
 </div>
 <div class="main-content">
   <div id="tab-product" class="tab-pane">
-    <h2 class="mb-4">Products</h2>
+    <h2 class="mb-4">ကုန်ပစ္စည်းစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-product" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('product')">
+      <div id="summary-product" class="align-self-center"></div>
+    </div>
     <div id="table-product"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-product"></ul></nav>
   </div>
   <div id="tab-customers" class="tab-pane d-none">
-    <h2 class="mb-4">Customers</h2>
+    <h2 class="mb-4">ဖောက်သည်စာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-customers" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('customers')">
+      <div id="summary-customers" class="align-self-center"></div>
+    </div>
     <div id="table-customers"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-customers"></ul></nav>
   </div>
   <div id="tab-categories" class="tab-pane d-none">
-    <h2 class="mb-4">Categories</h2>
+    <h2 class="mb-4">အမျိုးအစားစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-categories" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('categories')">
+      <div id="summary-categories" class="align-self-center"></div>
+    </div>
     <div id="table-categories"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-categories"></ul></nav>
   </div>
   <div id="tab-unit" class="tab-pane d-none">
-    <h2 class="mb-4">Unit</h2>
+    <h2 class="mb-4">ယူနစ်စာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-unit" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('unit')">
+      <div id="summary-unit" class="align-self-center"></div>
+    </div>
     <div id="table-unit"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-unit"></ul></nav>
   </div>
   <div id="tab-supplier" class="tab-pane d-none">
-    <h2 class="mb-4">Supplier</h2>
+    <h2 class="mb-4">ပေးသွင်းသူစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-supplier" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('supplier')">
+      <div id="summary-supplier" class="align-self-center"></div>
+    </div>
     <div id="table-supplier"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-supplier"></ul></nav>
   </div>
   <div id="tab-voucherdetails" class="tab-pane d-none">
-    <h2 class="mb-4">Voucher Details</h2>
+    <h2 class="mb-4">ငွေတောင်းခံစာစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-voucherdetails" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('voucherdetails')">
+      <div id="summary-voucherdetails" class="align-self-center"></div>
+    </div>
     <div id="table-voucherdetails"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-voucherdetails"></ul></nav>
   </div>
   <div id="tab-salelist" class="tab-pane d-none">
-    <h2 class="mb-4">Sale List</h2>
+    <h2 class="mb-4">အရောင်းစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-salelist" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('salelist')">
+      <div id="summary-salelist" class="align-self-center"></div>
+    </div>
     <div id="table-salelist"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-salelist"></ul></nav>
   </div>
   <div id="tab-purchaselist" class="tab-pane d-none">
-    <h2 class="mb-4">Purchase List</h2>
+    <h2 class="mb-4">အဝယ်စာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-purchaselist" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('purchaselist')">
+      <div id="summary-purchaselist" class="align-self-center"></div>
+    </div>
     <div id="table-purchaselist"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-purchaselist"></ul></nav>
   </div>
   <div id="tab-purchasevoucherdetails" class="tab-pane d-none">
-    <h2 class="mb-4">Purchase Voucher Details</h2>
+    <h2 class="mb-4">အဝယ်ငွေတောင်းခံစာစာရင်း</h2>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-purchasevoucherdetails" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInput('purchasevoucherdetails')">
+      <div id="summary-purchasevoucherdetails" class="align-self-center"></div>
+    </div>
     <div id="table-purchasevoucherdetails"></div>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-purchasevoucherdetails"></ul></nav>
   </div>
   <div id="tab-payables" class="tab-pane d-none">
     <h2 class="mb-4">ပေးရန်ရှိသူများ</h2>
-    <div id="payables-summary" class="mb-2"></div>
+    <div class="d-flex justify-content-between mb-2">
+      <input type="text" id="search-payables" class="form-control w-25" placeholder="ရှာဖွေရန်..." oninput="onSearchInputPayables()">
+      <div id="summary-payables" class="align-self-center"></div>
+    </div>
     <div id="table-payables"></div>
-    <nav>
-      <ul class="pagination justify-content-center my-2" id="payables-pagination"></ul>
-    </nav>
+    <nav><ul class="pagination justify-content-center my-2" id="pagination-payables"></ul></nav>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -113,6 +159,7 @@ function showTab(tab) {
   document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.add('d-none'));
   document.getElementById('tab-' + tab).classList.remove('d-none');
   if(tab === 'payables') fetchAndRenderPayables();
+  renderDataTab(tab); // Render data for all tabs
 }
 function renderTable(containerId, data) {
   const container = document.getElementById(containerId);
@@ -133,39 +180,131 @@ function renderTable(containerId, data) {
 function showLoading(containerId) {
   document.getElementById(containerId).innerHTML = '<div class="loading-spinner"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 }
+// For each tab, add search, summary, and pagination logic in Myanmar
 const dataFiles = [
-  { file: 'product.json', tab: 'product', container: 'table-product' },
-  { file: 'customers.json', tab: 'customers', container: 'table-customers' },
-  { file: 'categories.json', tab: 'categories', container: 'table-categories' },
-  { file: 'unit.json', tab: 'unit', container: 'table-unit' },
-  { file: 'supplier.json', tab: 'supplier', container: 'table-supplier' },
-  { file: 'voucherdetails.json', tab: 'voucherdetails', container: 'table-voucherdetails' },
-  { file: 'salelist.json', tab: 'salelist', container: 'table-salelist' },
-  { file: 'purchaselist.json', tab: 'purchaselist', container: 'table-purchaselist' },
-  { file: 'purchasevoucherdetails.json', tab: 'purchasevoucherdetails', container: 'table-purchasevoucherdetails' },
+  { file: 'product.json', tab: 'product', container: 'table-product', search: 'search-product', summary: 'summary-product', pagination: 'pagination-product' },
+  { file: 'customers.json', tab: 'customers', container: 'table-customers', search: 'search-customers', summary: 'summary-customers', pagination: 'pagination-customers' },
+  { file: 'categories.json', tab: 'categories', container: 'table-categories', search: 'search-categories', summary: 'summary-categories', pagination: 'pagination-categories' },
+  { file: 'unit.json', tab: 'unit', container: 'table-unit', search: 'search-unit', summary: 'summary-unit', pagination: 'pagination-unit' },
+  { file: 'supplier.json', tab: 'supplier', container: 'table-supplier', search: 'search-supplier', summary: 'summary-supplier', pagination: 'pagination-supplier' },
+  { file: 'voucherdetails.json', tab: 'voucherdetails', container: 'table-voucherdetails', search: 'search-voucherdetails', summary: 'summary-voucherdetails', pagination: 'pagination-voucherdetails' },
+  { file: 'salelist.json', tab: 'salelist', container: 'table-salelist', search: 'search-salelist', summary: 'summary-salelist', pagination: 'pagination-salelist' },
+  { file: 'purchaselist.json', tab: 'purchaselist', container: 'table-purchaselist', search: 'search-purchaselist', summary: 'summary-purchaselist', pagination: 'pagination-purchaselist' },
+  { file: 'purchasevoucherdetails.json', tab: 'purchasevoucherdetails', container: 'table-purchasevoucherdetails', search: 'search-purchasevoucherdetails', summary: 'summary-purchasevoucherdetails', pagination: 'pagination-purchasevoucherdetails' },
 ];
-function fetchAndRenderAll() {
-  dataFiles.forEach(({file, container}) => {
+const dataFilesMap = Object.fromEntries(dataFiles.map(d => [d.tab, d]));
+const dataCache = {};
+const searchCache = {};
+const pageCache = {};
+function renderDataTab(tab) {
+  const { file, container, search, summary, pagination } = dataFilesMap[tab];
+  if (!dataCache[tab]) {
     showLoading(container);
-    fetch(file)
-      .then(res => res.json())
-      .then(data => renderTable(container, data))
-      .catch(() => {
-        document.getElementById(container).innerHTML = '<div class="alert alert-danger">Failed to load '+file+'</div>';
-      });
+    fetch(file).then(r => r.json()).then(data => {
+      dataCache[tab] = data;
+      searchCache[tab] = '';
+      pageCache[tab] = 1;
+      renderDataTable(tab);
+    }).catch(() => {
+      document.getElementById(container).innerHTML = '<div class="alert alert-danger">ဖိုင်ဖွင့်၍မရပါ။</div>';
+    });
+  } else {
+    renderDataTable(tab);
+  }
+}
+function renderDataTable(tab) {
+  const { container, search, summary, pagination } = dataFilesMap[tab];
+  const data = dataCache[tab] || [];
+  const searchValue = (document.getElementById(search)?.value || '').toLowerCase();
+  let filtered = data;
+  if (searchValue) {
+    filtered = data.filter(row => Object.values(row).some(val => String(val).toLowerCase().includes(searchValue)));
+  }
+  const perPage = 10;
+  const page = pageCache[tab] || 1;
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
+  const pageData = filtered.slice(start, end);
+  let html = '<div class="table-responsive"><table class="table table-bordered table-hover table-sm">';
+  // Myanmar headers
+  const headers = myanmarHeaders[tab] || Object.keys(data[0] || {});
+  html += '<thead class="table-dark"><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead>';
+  html += '<tbody>';
+  pageData.forEach((row, idx) => {
+    html += '<tr>';
+    html += `<td>${start + idx + 1}</td>`;
+    if (tab === 'product') {
+      html += `<td>${row.productname||''}</td><td>${row.categories||''}</td><td>${row.barcode||''}</td><td>${row.cost||''}</td><td>${row.price||''}</td><td>${row.stock||''}</td><td>${row.unit||''}</td><td>${row.note||''}</td><td>${row.price2||''}</td><td>${row.price3||''}</td><td>${row.stocknoti||''}</td><td>${row.expiredatetick||''}</td><td>${row.expiredatenoti||''}</td><td>${row.expirenotidatetick||''}</td><td>${row.stock2||''}</td>`;
+    } else if (tab === 'customers') {
+      html += `<td>${row.name||''}</td><td>${row.adress||''}</td><td>${row.category||''}</td><td>${row.note||''}</td><td>${row.phonenumber||''}</td>`;
+    } else if (tab === 'categories') {
+      html += `<td>${row.name||''}</td>`;
+    } else if (tab === 'unit') {
+      html += `<td>${row.name||''}</td>`;
+    } else if (tab === 'supplier') {
+      html += `<td>${row.name||''}</td><td>${row.adress||''}</td><td>${row.phonenumber||''}</td><td>${row.note||''}</td>`;
+    } else if (tab === 'voucherdetails') {
+      html += `<td>${row.customername||''}</td><td>${row.date||''}</td><td>${row.total||''}</td><td>${row.paid||''}</td><td>${row.totalminuspaid||''}</td><td>${row.note||''}</td>`;
+    } else if (tab === 'salelist') {
+      html += `<td>${row.customername||''}</td><td>${row.productname||''}</td><td>${row.quantity||''}</td><td>${row.total||''}</td><td>${row.date||''}</td>`;
+    } else if (tab === 'purchaselist') {
+      html += `<td>${row.productname||''}</td><td>${row.suppliername||''}</td><td>${row.quantity||''}</td><td>${row.total||''}</td><td>${row.date||''}</td>`;
+    } else if (tab === 'purchasevoucherdetails') {
+      html += `<td>${row.suppliername||''}</td><td>${row.date||''}</td><td>${row.total||''}</td><td>${row.paid||''}</td><td>${row.totalminuspaid||''}</td><td>${row.note||''}</td>`;
+    }
+    html += '</tr>';
   });
+  html += '</tbody></table></div>';
+  document.getElementById(container).innerHTML = html;
+  // Summary
+  document.getElementById(summary).innerHTML = `စုစုပေါင်း <b>${filtered.length}</b> ခု၊ စာရင်း ${start+1} မှ ${Math.min(end, filtered.length)}`;
+  // Pagination
+  renderDataPagination(tab, filtered.length, page, perPage);
+}
+function renderDataPagination(tab, total, current, perPage) {
+  const totalPages = Math.ceil(total / perPage);
+  const pag = document.getElementById(dataFilesMap[tab].pagination);
+  pag.innerHTML = '';
+  if (totalPages <= 1) return;
+  const createPage = (p, label, active = false, disabled = false) =>
+    `<li class="page-item${active ? ' active' : ''}${disabled ? ' disabled' : ''}">
+      <a class="page-link" href="#" onclick="gotoDataPage('${tab}',${p});return false;">${label}</a>
+    </li>`;
+  pag.innerHTML += createPage(1, 'ပထမ', current === 1, current === 1);
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || (i >= current - 1 && i <= current + 1)) {
+      pag.innerHTML += createPage(i, i, current === i);
+    } else if (i === current - 2 || i === current + 2) {
+      pag.innerHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+    }
+  }
+  pag.innerHTML += createPage(totalPages, 'နောက်ဆုံး', current === totalPages, current === totalPages);
+}
+function gotoDataPage(tab, page) {
+  pageCache[tab] = page;
+  renderDataTable(tab);
+}
+function onSearchInput(tab) {
+  pageCache[tab] = 1;
+  renderDataTable(tab);
 }
 function renderPayablesTable(data, page = 1, perPage = 10) {
+  const searchValue = (document.getElementById('search-payables')?.value || '').toLowerCase();
+  let filtered = data;
+  if (searchValue) {
+    filtered = data.filter(row => Object.values(row).some(val => String(val).toLowerCase().includes(searchValue)));
+  }
+  payablesFiltered = filtered;
   const container = document.getElementById('table-payables');
-  if (!data || !Array.isArray(data) || data.length === 0) {
+  if (!filtered || !Array.isArray(filtered) || filtered.length === 0) {
     container.innerHTML = '<div class="alert alert-warning">ပေးရန်ရှိသူများ မရှိပါ။</div>';
-    document.getElementById('payables-summary').innerHTML = '';
-    document.getElementById('payables-pagination').innerHTML = '';
+    document.getElementById('summary-payables').innerHTML = '';
+    document.getElementById('pagination-payables').innerHTML = '';
     return;
   }
   const start = (page - 1) * perPage;
   const end = start + perPage;
-  const pageData = data.slice(start, end);
+  const pageData = filtered.slice(start, end);
   let html = '<div class="table-responsive"><table class="table table-bordered table-hover table-sm">';
   html += '<thead class="table-dark"><tr>' +
     '<th>စဉ်</th>' +
@@ -187,13 +326,13 @@ function renderPayablesTable(data, page = 1, perPage = 10) {
   html += '</tbody></table></div>';
   container.innerHTML = html;
   // Summary
-  document.getElementById('payables-summary').innerHTML = `စုစုပေါင်း <b>${data.length}</b> ယောက်၊ စာရင်း ${start+1} မှ ${Math.min(end, data.length)}`;
+  document.getElementById('summary-payables').innerHTML = `စုစုပေါင်း <b>${filtered.length}</b> ယောက်၊ စာရင်း ${start+1} မှ ${Math.min(end, filtered.length)}`;
   // Pagination
-  renderPayablesPagination(data.length, page, perPage);
+  renderPayablesPagination(filtered.length, page, perPage);
 }
 function renderPayablesPagination(total, current, perPage) {
   const totalPages = Math.ceil(total / perPage);
-  const pag = document.getElementById('payables-pagination');
+  const pag = document.getElementById('pagination-payables');
   pag.innerHTML = '';
   if (totalPages <= 1) return;
   const createPage = (p, label, active = false, disabled = false) =>
@@ -210,16 +349,14 @@ function renderPayablesPagination(total, current, perPage) {
   }
   pag.innerHTML += createPage(totalPages, 'နောက်ဆုံး', current === totalPages, current === totalPages);
 }
-let payablesData = [];
-let payablesCurrentPage = 1;
 function gotoPayablesPage(page) {
   payablesCurrentPage = page;
-  renderPayablesTable(payablesData, payablesCurrentPage);
+  renderPayablesTable(payablesFiltered, payablesCurrentPage);
 }
 function fetchAndRenderPayables() {
   showLoading('table-payables');
-  document.getElementById('payables-summary').innerHTML = '';
-  document.getElementById('payables-pagination').innerHTML = '';
+  document.getElementById('summary-payables').innerHTML = '';
+  document.getElementById('pagination-payables').innerHTML = '';
   Promise.all([
     fetch('voucherdetails.json').then(r => r.json()),
     fetch('customers.json').then(r => r.json())
@@ -245,14 +382,28 @@ function fetchAndRenderPayables() {
       if (c) g.phonenumber = c.phonenumber;
     });
     payablesData = Object.values(grouped).sort((a,b) => b.totaldebt - a.totaldebt);
+    payablesFiltered = payablesData;
     payablesCurrentPage = 1;
-    renderPayablesTable(payablesData, payablesCurrentPage);
+    renderPayablesTable(payablesFiltered, payablesCurrentPage);
   }).catch(() => {
     document.getElementById('table-payables').innerHTML = '<div class="alert alert-danger">ပေးရန်ရှိသူစာရင်း ဖတ်မရပါ။</div>';
   });
 }
-fetchAndRenderAll();
-showTab('product');
+// Myanmar headers for each table
+const myanmarHeaders = {
+  product: [
+    'စဉ်','ကုန်ပစ္စည်းအမည်','အမျိုးအစား','ဘားကုဒ်','ဝယ်ဈေး','ရောင်းဈေး','လက်ကျန်','ယူနစ်','မှတ်ချက်','ဈေး၂','ဈေး၃','လက်ကျန်သတိပေး','သက်တမ်း','သက်တမ်းသတိပေး','သက်တမ်းသတိပေးရက်','လက်ကျန်၂'
+  ],
+  customers: ['စဉ်','ဖောက်သည်အမည်','လိပ်စာ','အမျိုးအစား','မှတ်ချက်','ဖုန်းနံပါတ်'],
+  categories: ['စဉ်','အမျိုးအစားအမည်'],
+  unit: ['စဉ်','ယူနစ်အမည်'],
+  supplier: ['စဉ်','ပေးသွင်းသူအမည်','လိပ်စာ','ဖုန်းနံပါတ်','မှတ်ချက်'],
+  voucherdetails: ['စဉ်','ဖောက်သည်အမည်','ရက်စွဲ','စုစုပေါင်း','ပေးငွေ','ကျန်ငွေ','မှတ်ချက်'],
+  salelist: ['စဉ်','ဖောက်သည်အမည်','ကုန်ပစ္စည်းအမည်','အရေအတွက်','စုစုပေါင်း','ရက်စွဲ'],
+  purchaselist: ['စဉ်','ကုန်ပစ္စည်းအမည်','ပေးသွင်းသူ','အရေအတွက်','စုစုပေါင်း','ရက်စွဲ'],
+  purchasevoucherdetails: ['စဉ်','ပေးသွင်းသူအမည်','ရက်စွဲ','စုစုပေါင်း','ပေးငွေ','ကျန်ငွေ','မှတ်ချက်'],
+  payables: ['စဉ်','ဖောက်သည်အမည်','ကျန်ငွေ','နောက်ဆုံးရက်','ဖုန်းနံပါတ်']
+};
 </script>
 </body>
 </html>
