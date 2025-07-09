@@ -440,7 +440,7 @@ function renderDataTable(tab) {
   if (searchValue) {
     filtered = data.filter(row => Object.values(row).some(val => String(val).toLowerCase().includes(searchValue)));
   }
-  const perPage = 10;
+  const perPage = 8;
   const page = pageCache[tab] || 1;
   const start = (page - 1) * perPage;
   const end = start + perPage;
@@ -542,6 +542,7 @@ function renderPayablesTable(data, page = 1, perPage = 10) {
     document.getElementById('pagination-payables').innerHTML = '';
     return;
   }
+  perPage = 8;
   const start = (page - 1) * perPage;
   const end = start + perPage;
   const pageData = filtered.slice(start, end);
