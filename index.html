@@ -22,11 +22,18 @@
     .sidebar .nav-link { color: #adb5bd; }
     .sidebar .nav-link.active, .sidebar .nav-link:hover { color: #fff; background: #495057; }
     .sidebar .nav-link i { margin-right: 10px; }
-    .main-content { margin-left: 220px; padding: 30px 20px; }
+    .main-content { margin-left: 220px; padding: 30px 20px; min-height: 100vh; }
+    @media (max-width: 992px) {
+      .main-content { padding: 20px 5px; }
+    }
     @media (max-width: 768px) {
       .sidebar { left: -220px; }
       .sidebar.show { left: 0; }
-      .main-content { margin-left: 0; }
+      .main-content { margin-left: 0; padding: 10px 2px; }
+      .sidebar-toggle { top: 5px; left: 5px; padding: 6px 10px; }
+      .table-responsive { font-size: 13px; }
+      .d-flex.justify-content-between.mb-2 { flex-direction: column !important; gap: 8px; }
+      .form-control.w-25 { width: 100% !important; }
     }
     .sidebar-toggle {
       position: fixed; left: 10px; top: 10px; z-index: 1100;
@@ -34,6 +41,12 @@
     }
     .loading-spinner {
       display: flex; align-items: center; justify-content: center; height: 200px;
+    }
+    .table-responsive { overflow-x: auto; }
+    .table th, .table td { vertical-align: middle; }
+    @media (max-width: 576px) {
+      .table th, .table td { padding: 0.3rem 0.2rem; }
+      .main-content { padding: 5px 1px; }
     }
   </style>
 </head>
@@ -234,23 +247,37 @@ function renderDataTable(tab) {
     html += '<tr>';
     html += `<td>${start + idx + 1}</td>`;
     if (tab === 'product') {
-      html += `<td>${row.productname||''}</td><td>${row.categories||''}</td><td>${row.barcode||''}</td><td>${row.cost||''}</td><td>${row.price||''}</td><td>${row.stock||''}</td><td>${row.unit||''}</td><td>${row.note||''}</td><td>${row.price2||''}</td><td>${row.price3||''}</td><td>${row.stocknoti||''}</td><td>${row.expiredatetick||''}</td><td>${row.expiredatenoti||''}</td><td>${row.expirenotidatetick||''}</td><td>${row.stock2||''}</td>`;
+      html += `<td>${row.productname ?? '-'}</td>`;
+      html += `<td>${row.categories?.trim() || '-'}</td>`;
+      html += `<td>${row.barcode ?? '-'}</td>`;
+      html += `<td>${row.cost ?? '-'}</td>`;
+      html += `<td>${row.price ?? '-'}</td>`;
+      html += `<td>${row.stock ?? '-'}</td>`;
+      html += `<td>${row.unit ?? '-'}</td>`;
+      html += `<td>${row.note ?? '-'}</td>`;
+      html += `<td>${row.price2 ?? '-'}</td>`;
+      html += `<td>${row.price3 ?? '-'}</td>`;
+      html += `<td>${row.stocknoti ?? '-'}</td>`;
+      html += `<td>${row.expiredatetick ?? '-'}</td>`;
+      html += `<td>${row.expiredatenoti ?? '-'}</td>`;
+      html += `<td>${row.expirenotidatetick ?? '-'}</td>`;
+      html += `<td>${row.stock2 ?? '-'}</td>`;
     } else if (tab === 'customers') {
-      html += `<td>${row.name||''}</td><td>${row.adress||''}</td><td>${row.category||''}</td><td>${row.note||''}</td><td>${row.phonenumber||''}</td>`;
+      html += `<td>${row.name ?? '-'}</td><td>${row.adress ?? '-'}</td><td>${row.category ?? '-'}</td><td>${row.note ?? '-'}</td><td>${row.phonenumber ?? '-'}</td>`;
     } else if (tab === 'categories') {
-      html += `<td>${row.name||''}</td>`;
+      html += `<td>${row.name ?? row.categoryname ?? '-'}</td>`;
     } else if (tab === 'unit') {
-      html += `<td>${row.name||''}</td>`;
+      html += `<td>${row.name ?? row.unit ?? '-'}</td>`;
     } else if (tab === 'supplier') {
-      html += `<td>${row.name||''}</td><td>${row.adress||''}</td><td>${row.phonenumber||''}</td><td>${row.note||''}</td>`;
+      html += `<td>${row.name ?? '-'}</td><td>${row.adress ?? '-'}</td><td>${row.phonenumber ?? '-'}</td><td>${row.note ?? '-'}</td>`;
     } else if (tab === 'voucherdetails') {
-      html += `<td>${row.customername||''}</td><td>${row.date||''}</td><td>${row.total||''}</td><td>${row.paid||''}</td><td>${row.totalminuspaid||''}</td><td>${row.note||''}</td>`;
+      html += `<td>${row.customername ?? '-'}</td><td>${row.date ?? '-'}</td><td>${row.total ?? '-'}</td><td>${row.paid ?? '-'}</td><td>${row.totalminuspaid ?? '-'}</td><td>${row.note ?? '-'}</td>`;
     } else if (tab === 'salelist') {
-      html += `<td>${row.customername||''}</td><td>${row.productname||''}</td><td>${row.quantity||''}</td><td>${row.total||''}</td><td>${row.date||''}</td>`;
+      html += `<td>${row.customername ?? '-'}</td><td>${row.productname ?? '-'}</td><td>${row.quantity ?? '-'}</td><td>${row.total ?? '-'}</td><td>${row.date ?? '-'}</td>`;
     } else if (tab === 'purchaselist') {
-      html += `<td>${row.productname||''}</td><td>${row.suppliername||''}</td><td>${row.quantity||''}</td><td>${row.total||''}</td><td>${row.date||''}</td>`;
+      html += `<td>${row.productname ?? '-'}</td><td>${row.suppliername ?? '-'}</td><td>${row.quantity ?? '-'}</td><td>${row.total ?? '-'}</td><td>${row.date ?? '-'}</td>`;
     } else if (tab === 'purchasevoucherdetails') {
-      html += `<td>${row.suppliername||''}</td><td>${row.date||''}</td><td>${row.total||''}</td><td>${row.paid||''}</td><td>${row.totalminuspaid||''}</td><td>${row.note||''}</td>`;
+      html += `<td>${row.suppliername ?? '-'}</td><td>${row.date ?? '-'}</td><td>${row.total ?? '-'}</td><td>${row.paid ?? '-'}</td><td>${row.totalminuspaid ?? '-'}</td><td>${row.note ?? '-'}</td>`;
     }
     html += '</tr>';
   });
